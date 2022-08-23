@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import "./splash_screen.dart";
 
 void main() {
-  runApp(MyApp());
+  runApp(SplashScreen());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Zemoji',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(216, 149, 5, 0.966),
+          backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -42,14 +43,12 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: NavigationBar(destinations: const[
+        bottomNavigationBar: NavigationBar(destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: "Home"),
           NavigationDestination(icon: Icon(Icons.search), label: "Search"),
           NavigationDestination(icon: Icon(Icons.menu), label: "Menu"),
           NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
         ]),
-
-
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
