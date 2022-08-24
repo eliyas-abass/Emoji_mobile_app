@@ -2,11 +2,68 @@ import 'package:flutter/material.dart';
 import "./splash_screen.dart";
 
 void main() {
-  runApp(SplashScreen());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Zemoji',
+      home: SplashScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text('Zemoji'),
+            SizedBox(width: 5),
+            Icon(
+              Icons.emoji_emotions,
+            )
+          ],
+        ),
+      ),
+      bottomNavigationBar: NavigationBar(destinations: const [
+        NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+        NavigationDestination(icon: Icon(Icons.search), label: "Search"),
+        NavigationDestination(icon: Icon(Icons.menu), label: "Menu"),
+        NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
+      ]),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              createImojiCard("Hand Gestures"),
+              createImojiCard("Smileys"),
+              createImojiCard("Food and Drinks"),
+              createImojiCard("Transport"),
+              createImojiCard("Events"),
+              createImojiCard("Accessories"),
+              createImojiCard("Signs"),
+              createImojiCard("People"),
+              createImojiCard("Games"),
+              createImojiCard("Plants and Animals"),
+              createImojiCard("Flags"),
+              createImojiCard("Animated Moods"),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   Container createContainer(color) {
     return Container(
@@ -22,54 +79,6 @@ class MyApp extends StatelessWidget {
   SizedBox createSizedBox() {
     return const SizedBox(
       width: 15,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Zemoji',
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Zemoji'),
-              SizedBox(width: 5),
-              Icon(
-                Icons.emoji_emotions,
-              )
-            ],
-          ),
-        ),
-        bottomNavigationBar: NavigationBar(destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.search), label: "Search"),
-          NavigationDestination(icon: Icon(Icons.menu), label: "Menu"),
-          NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
-        ]),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                createImojiCard("Hand Gestures"),
-                createImojiCard("Smileys"),
-                createImojiCard("Food and Drinks"),
-                createImojiCard("Transport"),
-                createImojiCard("Events"),
-                createImojiCard("Accessories"),
-                createImojiCard("Signs"),
-                createImojiCard("People"),
-                createImojiCard("Games"),
-                createImojiCard("Plants and Animals"),
-                createImojiCard("Flags"),
-                createImojiCard("Animated Moods"),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 

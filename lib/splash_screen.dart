@@ -5,32 +5,29 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                width: 154,
-                height: 154,
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
               ),
-            ],
-          ),
-          const Text(
-            'Zemoji',
-            style: TextStyle(fontSize: 64, color: Colors.white),
-          )
-        ],
+              width: 154,
+              height: 154,
+            ),
+            const Text(
+              'Zemoji',
+              style: TextStyle(fontSize: 64, color: Colors.white),
+            )
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
