@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:imoji_app/menu_screen.dart';
+import 'package:imoji_app/search_screen.dart';
 import 'package:imoji_app/view_more_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentScreenIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +29,27 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBar(destinations: const [
-        NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-        NavigationDestination(icon: Icon(Icons.search), label: "Search"),
-        NavigationDestination(icon: Icon(Icons.menu), label: "Menu"),
-        NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
-      ]),
-      body: SafeArea(
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: currentScreenIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            currentScreenIndex = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+          NavigationDestination(icon: Icon(Icons.search), label: "Search"),
+          NavigationDestination(icon: Icon(Icons.menu), label: "Menu"),
+          NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
+        ],
+      ),
+      body: createBody(context),
+    );
+  }
+
+  Widget createBody(BuildContext context) {
+    if (currentScreenIndex == 0) {
+      return SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -45,8 +68,18 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
+    }
+
+    if (currentScreenIndex == 1) {
+      return const SearchScreen();
+    }
+
+    if (currentScreenIndex == 2) {
+      return const MenuScreen();
+    }
+
+    return const Center(child: Text("Favorite"));
   }
 
   Container createContainer(color) {
