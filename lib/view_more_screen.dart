@@ -13,7 +13,7 @@ class ViewMore extends StatelessWidget {
         title: Text(this.title),
       ),
       body: const Center(
-        child: Text("View more screen new"),
+        child: Text("View more screen"),
       ),
     );
   }
