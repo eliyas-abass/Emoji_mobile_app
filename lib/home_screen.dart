@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imoji_app/view_more_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -29,18 +30,18 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              createImojiCard("Hand Gestures"),
-              createImojiCard("Smileys"),
-              createImojiCard("Food and Drinks"),
-              createImojiCard("Transport"),
-              createImojiCard("Events"),
-              createImojiCard("Accessories"),
-              createImojiCard("Signs"),
-              createImojiCard("People"),
-              createImojiCard("Games"),
-              createImojiCard("Plants and Animals"),
-              createImojiCard("Flags"),
-              createImojiCard("Animated Moods"),
+              createImojiCard("Hand Gestures", context),
+              createImojiCard("Smileys", context),
+              createImojiCard("Food and Drinks", context),
+              createImojiCard("Transport", context),
+              createImojiCard("Events", context),
+              // createImojiCard("Accessories"),
+              // createImojiCard("Signs"),
+              // createImojiCard("People"),
+              // createImojiCard("Games"),
+              // createImojiCard("Plants and Animals"),
+              // createImojiCard("Flags"),
+              // createImojiCard("Animated Moods"),
             ],
           ),
         ),
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Container createImojiCard(String title) {
+  Container createImojiCard(String title, context) {
     return Container(
       margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.all(10),
@@ -94,8 +95,13 @@ class HomeScreen extends StatelessWidget {
               createSizedBox(),
               createContainer(Colors.blue),
               Spacer(),
-              const ElevatedButton(
-                onPressed: null,
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ViewMore(title)),
+                  );
+                },
                 child: Text('View More'),
               )
             ],
