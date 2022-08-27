@@ -5,8 +5,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -31,6 +30,6 @@ class SplashScreen extends StatelessWidget {
           )
         ],
       ),
-    ));
+    );
   }
 }
