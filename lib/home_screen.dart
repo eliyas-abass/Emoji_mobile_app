@@ -101,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Container createImojiCard(String title, context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(10),
       height: 100,
       color: const Color(0xFFD9D9D9),
       child: Column(
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
               createContainer(Colors.green),
               createSizedBox(),
               createContainer(Colors.blue),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(builder: (context) => ViewMore(title)),
                   );
                 },
-                child: Text('View More'),
+                child: const Text('View More'),
               )
             ],
           ),

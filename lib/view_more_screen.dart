@@ -10,7 +10,7 @@ class ViewMore extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
-        title: Text(this.title),
+        title: Text(title),
       ),
       body: const Center(
         child: Text("View more screen"),

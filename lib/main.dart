@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:imoji_app/home_screen.dart';
-import 'package:imoji_app/view_more_screen.dart';
-import "./splash_screen.dart";
 
 void main() {
   runApp(const MyApp());
