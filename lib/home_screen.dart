@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imoji_app/menu_screen.dart';
 import 'package:imoji_app/search_screen.dart';
 import 'package:imoji_app/view_more_screen.dart';
+
 class myApp extends StatelessWidget {
   const myApp({super.key});
 
@@ -20,6 +21,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentScreenIndex = 0;
+  String appBarTitle = "Home";
+
+  List navbarLabel = ["Home", "Search", "Menu", "Favorite"];
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('Zemoji'),
-            SizedBox(width: 5),
-            Icon(
+          children: [
+            Text(appBarTitle),
+            const SizedBox(width: 5),
+            const Icon(
               Icons.emoji_emotions,
             )
           ],
@@ -42,13 +46,26 @@ class _HomeScreenState extends State<HomeScreen> {
         onDestinationSelected: (index) {
           setState(() {
             currentScreenIndex = index;
+            appBarTitle = navbarLabel[index];
           });
         },
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.search), label: "Search"),
-          NavigationDestination(icon: Icon(Icons.menu), label: "Menu"),
-          NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
+        destinations: [
+          NavigationDestination(
+            icon: const Icon(Icons.home),
+            label: navbarLabel[0],
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.search),
+            label: navbarLabel[1],
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.menu),
+            label: navbarLabel[2],
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.favorite),
+            label: navbarLabel[3],
+          ),
         ],
       ),
       body: createBody(context),
@@ -90,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return const Center(child: Text("Favorite"));
   }
 
-   Container createContainer(color) {  
+  Container createContainer(color) {
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -122,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
-          ),  
+          ),
           const SizedBox(
             height: 12,
           ),
@@ -140,7 +157,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewMore(title),
+                    MaterialPageRoute(
+                      builder: (context) => ViewMore(title),
                     ),
                   );
                 },
