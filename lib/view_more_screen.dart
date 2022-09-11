@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class ViewMore extends StatefulWidget {
-  String title;
+  final String title;
 
-  ViewMore(this.title, {Key? key}) : super(key: key);
+  const ViewMore(this.title, {Key? key}) : super(key: key);
 
   @override
   State<ViewMore> createState() => _ViewMoreState();
@@ -22,21 +22,31 @@ class _ViewMoreState extends State<ViewMore> {
           backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
           title: Text(widget.title),
         ),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          if (icons.isNotEmpty)
-            Wrap(
-              spacing: 16, // gap between adjacent chips
-              runSpacing: 4.0, // gap between lines
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.center,
-              children: generateEmojiFromIcon(),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (icons.isNotEmpty)
+              Wrap(
+                spacing: 16, // gap between adjacent chips
+                runSpacing: 4.0, // gap between lines
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+                children: generateEmojiFromIcon(),
+              ),
+            MaterialButton(
+                child: const Text("Fetch Data"),
+                onPressed: () {
+                  fetchImoji();
+                }),
+            const Text(
+              "\u{1F920}",
+              style: TextStyle(
+                fontFamily: "Joypixels",
+                fontSize: 64,
+              ),
             ),
-          MaterialButton(
-              child: const Text("Fetch Data"),
-              onPressed: () {
-                fetchImoji();
-              })
-        ]));
+          ],
+        ));
   }
 
   fetchImoji() async {
@@ -55,9 +65,10 @@ class _ViewMoreState extends State<ViewMore> {
   List<Text> generateEmojiFromIcon() {
     return icons
         .map((icon) => Text(
-              icon["emoji"],
+              "${icon["emoji"]}",
               style: const TextStyle(
                 fontSize: 48,
+                fontFamily: "Joypixels",
               ),
             ))
         .toList();

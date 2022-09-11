@@ -3,15 +3,6 @@ import 'package:imoji_app/menu_screen.dart';
 import 'package:imoji_app/search_screen.dart';
 import 'package:imoji_app/view_more_screen.dart';
 
-class myApp extends StatelessWidget {
-  const myApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp();
-  }
-}
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
