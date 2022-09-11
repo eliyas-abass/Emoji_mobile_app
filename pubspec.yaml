@@ -48,14 +48,14 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
-  fonts:
-    - family: Joypixels
-      fonts:
-        - asset: assets/joypixels-android.ttf
+  # fonts:
+  #   - family: Joypixels
+  #     fonts:
+  #       - asset: assets/AppleColorEmoji.ttc
 
-    - family: Combo
-      fonts:
-        - asset: assets/Combo-Regular.ttf
+  #   - family: Combo
+  #     fonts:
+  #       - asset: assets/Combo-Regular.ttf
 
   #
   # For details regarding fonts from package dependencies,

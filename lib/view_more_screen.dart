@@ -15,6 +15,14 @@ class ViewMore extends StatefulWidget {
 
 class _ViewMoreState extends State<ViewMore> {
   List<Map> icons = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    fetchImoji();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,29 +30,20 @@ class _ViewMoreState extends State<ViewMore> {
           backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
           title: Text(widget.title),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        body: ListView(
           children: [
+            if (isLoading)
+              const Center(
+                child: CircularProgressIndicator(),
+              ),
             if (icons.isNotEmpty)
               Wrap(
-                spacing: 16, // gap between adjacent chips
-                runSpacing: 4.0, // gap between lines
+                spacing: 8, // gap between adjacent chips
+                runSpacing: 16, // gap between lines
                 direction: Axis.horizontal,
-                alignment: WrapAlignment.center,
+                alignment: WrapAlignment.spaceBetween,
                 children: generateEmojiFromIcon(),
               ),
-            MaterialButton(
-                child: const Text("Fetch Data"),
-                onPressed: () {
-                  fetchImoji();
-                }),
-            const Text(
-              "\u{1F920}",
-              style: TextStyle(
-                fontFamily: "Joypixels",
-                fontSize: 64,
-              ),
-            ),
           ],
         ));
   }
@@ -59,6 +58,7 @@ class _ViewMoreState extends State<ViewMore> {
 
     setState(() {
       icons = mapped;
+      isLoading = false;
     });
   }
 
