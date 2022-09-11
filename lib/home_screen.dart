@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:imoji_app/menu_screen.dart';
 import 'package:imoji_app/search_screen.dart';
 import 'package:imoji_app/view_more_screen.dart';
+class myApp extends StatelessWidget {
+  const myApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp();
+  }
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -58,13 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
               createImojiCard("Food and Drinks", context),
               createImojiCard("Transport", context),
               createImojiCard("Events", context),
-              // createImojiCard("Accessories"),
-              // createImojiCard("Signs"),
-              // createImojiCard("People"),
-              // createImojiCard("Games"),
-              // createImojiCard("Plants and Animals"),
-              // createImojiCard("Flags"),
-              // createImojiCard("Animated Moods"),
+              createImojiCard("Accessories", context),
+              createImojiCard("Signs", context),
+              createImojiCard("People", context),
+              createImojiCard("Games", context),
+              createImojiCard("Plants and Animals", context),
+              createImojiCard("Flags", context),
+              createImojiCard("Animated Moods", context),
             ],
           ),
         ),
@@ -82,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return const Center(child: Text("Favorite"));
   }
 
-  Container createContainer(color) {
+   Container createContainer(color) {  
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -114,13 +122,13 @@ class _HomeScreenState extends State<HomeScreen> {
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
-          ),
+          ),  
           const SizedBox(
             height: 12,
           ),
           Row(
             children: [
-              createContainer(Colors.green),
+              createContainer(Colors.blue),
               createSizedBox(),
               createContainer(Colors.blue),
               createSizedBox(),
@@ -132,7 +140,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewMore(title)),
+                    MaterialPageRoute(builder: (context) => ViewMore(title),
+                    ),
                   );
                 },
                 child: const Text('View More'),

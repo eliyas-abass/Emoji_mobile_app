@@ -5,8 +5,28 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Search Screen class"),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(216, 149, 5, 0.966),
+        title: const Text('Search'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
+        child: Container(
+          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: const TextField(
+            decoration: InputDecoration(
+              hintText: "search",
+              icon: Icon(Icons.search),
+              // hintStyle: GoogleFonts.notosans(fontSize: 14.0),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
